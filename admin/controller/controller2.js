@@ -12,7 +12,8 @@ function renderProductsList(productsList) {
     </td>
     <td>${product.desc}</td>
     <td>
-    <button class="btn btn-warning" onclick="editProduct(${product.id})">Edit</button>
+    <button class="btn btn-warning" onclick="editProduct(${product.id})"
+    data-bs-toggle="modal" data-bs-target="#exampleModal" id="addPhoneForm">Edit</button>
     <button class="btn btn-danger" onclick="delProduct(${product.id})">Delete</button>
     </td>
     </tr>

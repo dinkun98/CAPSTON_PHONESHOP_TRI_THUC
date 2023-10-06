@@ -118,7 +118,10 @@
     <section class="cartList container">
       <div class="modal fade" id="myModal">
         <div class="modal-dialog">
-          <div class="modal-content" style="justify-content: center; width: 120%;">
+          <div
+            class="modal-content"
+            style="justify-content: center;"
+          >
             <header class="head-form mb-0 d-flex justify-content-between">
               <h2 id="header-title">Cart List</h2>
               <button
@@ -127,10 +130,10 @@
                 class="btn btn-danger"
                 data-dismiss="modal"
               >
-              <i class="fa-brands fa-x-twitter"></i>
-              </button >
+                <i class="fa-brands fa-x-twitter"></i>
+              </button>
             </header>
-  
+
             <!-- Modal body -->
             <div class="modal-body">
               <table class="table table-bordered table-hover">
@@ -145,37 +148,80 @@
                 </thead>
                 <tbody id="tbodyShopList"></tbody>
               </table>
-              <div id="totalBill"></div>
             </div>
-  
+
             <!-- Modal footer -->
             <div class="modal-footer" id="modal-footer">
-              <button id="btnPurchase" type="button" class="btn btn-success">
-                Đặt hàng
+              <div id="totalBill"></div>
+              <button
+                id="btnPurchase"
+                type="button"
+                class="btn btn-success"
+                onclick="payBill()"
+              >
+                Thanh Toán
               </button>
-              <button id="btnXoa" type="button" class="btn btn-success">
-                Xóa 
-              </button>
-              
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="social"></section>
+    <section class="contact">
+      <div class="container">
+        <div class="contactContent">
+          <div class="aboutShop">
+            <ul class="item">
+              <li class="title">Giới Thiệu</li>
+              <li><a href="#">Giới thiệu công ty</a></li>
+              <li><a href="#">Tin tức</a></li>
+              <li><a href="#">Tuyển dụng</a></li>
+            </ul>
+            <ul class="item">
+              <li class="title">Hỗ trợ Khách hàng</li>
+              <li><a href="#">Hướng dẫn mua hàng trực tuyến</a></li>
+              <li><a href="#">Hướng dẫn thanh toán</a></li>
+              <li><a href="#">Gửi yêu cầu bảo hành</a></li>
+            </ul>
+            <ul class="item">
+              <li class="title">Chính sách chung</li>
+              <li><a href="">Chính sách bảo hành</a></li>
+              <li><a href="">Chính sách vận chuyển</a></li>
+              <li><a href="">Chính sách đổi trả</a></li>
+            </ul>
+            <ul class="item">
+              <li class="title">Thông tin khuyến mại</li>
+              <li><a href="">Chương trình khuyến mại</a></li>
+              <li><a href="">Sản phẩm khuyến mại</a></li>
+              <li><a href="">Sản phẩm bán chạy</a></li>
+            </ul>
+          </div>
+          <div class="socialMedia">
+            <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-square-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer></footer>
+    <footer>
+      <div class="container">
+        <div class="footerContent">
+          <p>WEBSITE ĐƯỢC SỞ HỬU VÀ QUẢN LÝ BỞI NGÔ HOÀNG THỨC</p>
+          <H3>CÔNG TY CYBERPHONE</H3>
+          <P>Địa chỉ: Bên Mỹ</P>
+          <p>Mua hàng: <a href="tel:+09xxxxxxxx">09xxxxxxxx</a></p>
+        </div>
+      </div>
+    </footer>
     <!-- Cart  -->
     <div class="cart">
-      <button class="cartIcon btn" data-toggle="modal"
-      data-target="#myModal">
+      <button class="cartIcon btn" data-toggle="modal" data-target="#myModal">
         <i class="fa-solid fa-cart-arrow-down"></i>
-        <div class="cartAmount">0</div>
+        <div class="cartAmount" id="quantity"></div>
       </button>
-      <div class="cartContent">
-        
-      </div>
     </div>
 
     <!-- JQUERY  -->

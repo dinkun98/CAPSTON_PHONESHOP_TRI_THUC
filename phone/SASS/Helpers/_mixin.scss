@@ -1,0 +1,47 @@
+@mixin styleText($fs, $fw, $color) {
+    font-size: $fs;
+    font-weight: $fw;
+    color: $color;
+}
+
+@mixin styleBtn($bg, $pd-y, $pd-x, $bd, $radius, $ls) {
+    background: $bg;
+    padding: $pd-y $pd-x;
+    border: $bd;
+    border-radius: $radius;
+    letter-spacing: $ls;
+}
+
+$breakpoint: (
+    "xs": 0,
+    "sm": 576px,
+    "md": 768px,
+    "lg": 992px,
+    "xl": 1200px,
+);
+
+@mixin xs {
+    @media (min-width: map-get($breakpoint, "xs")) {
+        @content
+    }
+};
+@mixin sm {
+    @media (min-width: map-get($breakpoint, "sm")) {
+        @content
+    }
+};
+@mixin md {
+    @media (min-width: map-get($breakpoint, "md")) {
+        @content
+    }
+};
+@mixin lg {
+    @media (min-width: map-get($breakpoint, "lg")) {
+        @content
+    }
+};
+@mixin xl {
+    @media (min-width: map-get($breakpoint, "xl")) {
+        @content
+    }
+}

@@ -1,0 +1,28 @@
+.cart {
+    position: fixed;
+    right: 10px;
+    top: 60px;
+  
+    .cartIcon {
+      display: flex;
+      position: relative;
+      i {
+        background-color: transparent;
+        @include styleText(40px, 600, orange);
+        padding: 5px;
+        border-radius: 4px;
+      }
+  
+      .cartAmount {
+        @include styleText(1.25rem, 600, red);
+        background-color: orange;
+        position: absolute;
+        top: 0px;
+        left: 54px;
+        height: 30px;
+        width: 30px;
+        padding: 0 6px 24px 4px;
+        border-radius: 50%;
+      }
+    }
+  }

@@ -1,5 +1,3 @@
-
-
 class CartItem {
     constructor(product, quantity) {
         this.product = product

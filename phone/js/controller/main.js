@@ -1,5 +1,9 @@
 let phoneListData = [];
-let cart = [];
+let cart =[];
+const LIST_CART = 'LIST_CART';
+let data = JSON.parse(localStorage.getItem(LIST_CART))
+console.log(data)
+
 const getEle = (selector) => {
   return document.querySelector(selector);
 };
@@ -90,7 +94,9 @@ const renderCart = (cart) => {
         })"><i class="fa-solid fa-plus"></i></span>
       </td>
       <td class="itemPrice">${cartItem.itemPrice()}</td>
-      <td></td>
+      <td class="btn btn-delete" onclick="deleteItem(${
+        cartItem.product.id
+      })"><i class="fa-solid fa-trash"></i></td>
     </tr>
     `;
   });
@@ -104,6 +110,31 @@ const findItem = (cart, id) => {
     }
   });
   return item;
+};
+
+const findIndexItem = (cart, id) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (Number(cart[i].product.id) === Number(id)) {
+      return i;
+    }
+  }
+  return i;
+};
+
+const handleTotalPrice = (cart) => {
+  let totalPrice = 0;
+  cart.forEach((element) => {
+    totalPrice += element.itemPrice();
+  });
+  return totalPrice;
+};
+
+const countItem = (cart) => {
+  let count = 0;
+  cart.forEach((element) => {
+    count += element.quantity;
+  });
+  return count;
 };
 
 window.addToCart = (id) => {
@@ -142,26 +173,21 @@ window.addToCart = (id) => {
     } else {
       sp.quantity++;
     }
-    renderCart(cart);
-    getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`
+    localStorage.setItem(LIST_CART, JSON.stringify(cart))
+    renderCart(data);
+    getEle("#quantity").innerHTML = countItem(cart);
+    getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
   });
 };
 
-const findIndexItem = (cart, id) => {
-  for (let i = 0; i < cart.length; i++) {
-    if (Number(cart[i].product.id) === Number(id)) {
-      return i;
-    }
-  }
-  return i;
-};
 
 window.addQty = (id) => {
   let i = findIndexItem(cart, id);
   let cartItem = cart[i];
   cartItem.quantity++;
-  renderCart(cart);
-  getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`
+  renderCart(data);
+  getEle("#quantity").innerHTML = countItem(cart);
+  getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
 };
 
 window.minusQty = (id) => {
@@ -169,18 +195,27 @@ window.minusQty = (id) => {
   let cartItem = cart[i];
   cartItem.quantity--;
   if (cartItem.quantity <= 0) {
-    cart.splice(cart[i], 1);
+    cart.splice(i, 1);
   }
-  renderCart(cart);
-  getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`
+  renderCart(data);
+  getEle("#quantity").innerHTML = countItem(cart);
+  getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
 };
 
+window.deleteItem = (id) => {
+  let i = findIndexItem(cart, id);
+  console.log(i);
+  cart.splice(Number(i), 1);
+  renderCart(data);
+  getEle("#quantity").innerHTML = countItem(cart);
+  getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
+};
 
-const handleTotalPrice = (cart) => {
-  let totalPrice = 0;
-  cart.forEach((element) => {
-    totalPrice += element.itemPrice();
-  })
-  return totalPrice
+window.payBill = (cart) => {
+  alert("Hoàn tất thanh toán!");
+  cart = [];
+  renderCart(data);
+  getEle("#quantity").innerHTML = countItem(cart);
+  getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
 };
 

@@ -1,0 +1,13 @@
+.cartList {
+    .modal-dialog {
+        .modal-content {
+            font-family: 'Times New Roman', Times, serif;
+            @include xs {
+                width: 100%;
+            }
+            @include md {
+                width: 120%;
+            }
+        }
+    }
+}

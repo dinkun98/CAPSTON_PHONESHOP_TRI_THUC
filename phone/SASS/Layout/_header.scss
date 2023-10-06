@@ -1,0 +1,23 @@
+header {
+    background-color: transparent;
+    .container {
+      .navbar-brand {
+        font-family: "Black Ops One", cursive;
+        @include styleText(50px, 500, orange);
+      }
+      .navbar-toggler {
+        .navbar-toggler-icon {
+          @include styleText(40px, 300, orange);
+          border: #2e2f33;
+        }
+      }
+      .navbar-nav {
+        width: 100%;
+        justify-content: space-evenly;
+        .nav-link {
+          font-family: "Black Ops One", cursive;
+          @include styleText(40px, 300, orange);
+        }
+      }
+    }
+  }

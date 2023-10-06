@@ -1,0 +1,44 @@
+.contact {
+    .contactContent {
+      .aboutShop {
+        display: flex;
+        justify-content: space-between;
+        @include xs {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+        };
+        @include md {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @include lg {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .item {
+          a {
+            @include styleText(1.2rem, 300, rgb(231, 145, 15));
+            font-family: "Times New Roman", Times, serif;
+            &:hover {
+              color: rgb(253, 50, 14);
+            }
+          }
+          .title {
+            @include styleText(1.75rem, 500, yellow);
+            font-family: "Times New Roman", Times, serif;
+          }
+        }
+      }
+      .socialMedia {
+        i {
+          @include styleText(3rem, 300, rgb(231, 145, 15));
+          margin-right: 9px;
+          &:hover{
+            color: rgb(253, 50, 14);
+            box-shadow: 0 0 9px 6px #4d4b4b;
+            border-radius: 10%;
+          }
+        }
+      }
+    }
+  }

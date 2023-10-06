@@ -1,0 +1,56 @@
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .carousel__contend {
+      position: relative;
+      .carousel__item {
+        .item__info {
+          h3 {
+            font-family: "Times New Roman", Times, serif;
+            @include styleText(50px, 500, pink);
+            @include xs {
+              font-size: 39px;
+            }
+          }
+          p {
+            font-family: "Times New Roman", Times, serif;
+            @include styleText(30px, 300, pink);
+            @include xs {
+              display: none;
+            }
+            @include md {
+              display: inline-block;
+            }
+          }
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .item__image {
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .carousel::before {
+    content: "";
+    background-image: url(../image/bgtech.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    opacity: 0.69;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }

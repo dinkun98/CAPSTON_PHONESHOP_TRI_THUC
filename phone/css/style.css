@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Jost", sans-serif, "Black Ops One", cursive;
+  background: linear-gradient(45deg, #5f6791 30%, #fc5c7d);
+  position: relative;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+  padding: 10px 20px;
+}
+
+header {
+  background-color: transparent;
+}
+header .container .navbar-brand {
+  font-family: "Black Ops One", cursive;
+  font-size: 50px;
+  font-weight: 500;
+  color: orange;
+}
+header .container .navbar-toggler .navbar-toggler-icon {
+  font-size: 40px;
+  font-weight: 300;
+  color: orange;
+  border: #2e2f33;
+}
+header .container .navbar-nav {
+  width: 100%;
+  justify-content: space-evenly;
+}
+header .container .navbar-nav .nav-link {
+  font-family: "Black Ops One", cursive;
+  font-size: 40px;
+  font-weight: 300;
+  color: orange;
+}
+
+.carousel {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.carousel .carousel__contend {
+  position: relative;
+}
+.carousel .carousel__contend .carousel__item .item__info {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .carousel__contend .carousel__item .item__info h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
+  font-weight: 500;
+  color: pink;
+}
+.carousel .carousel__contend .carousel__item .item__info p {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: pink;
+}
+.carousel .carousel__contend .carousel__item .item__image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .carousel__contend .carousel__item .item__image img {
+  width: 100%;
+}
+
+.carousel::before {
+  content: "";
+  background-image: url(../image/bgtech.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  opacity: 0.69;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.products .products__bg {
+  position: relative;
+  height: 120vh;
+  overflow: hidden;
+}
+.products .products__bg #option-brand {
+  background: rgb(95, 240, 216);
+  padding: 0 21;
+  border: solid transparent;
+  border-radius: 10px;
+  letter-spacing: 0;
+  margin-bottom: 54px;
+}
+.products .products__bg #products__list {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
+.products .products__bg #products__list .card {
+  position: relative;
+  flex-shrink: 0;
+  height: 426px;
+  width: 246px;
+  margin: 0 9px;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 9px 6px -6px #4d4b4b;
+  transform: translateY(0);
+  transition: 0.5s all;
+}
+.products .products__bg #products__list .card .card__top {
+  transform: translateY(0.5rem);
+  width: 100%;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fc5c7d;
+  transition: 0.5s;
+}
+.products .products__bg #products__list .card .card__img img {
+  position: absolute;
+  width: 189px;
+  height: 270px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 5%;
+  transform: translateY(60px);
+  transition: 0.5s all;
+}
+.products .products__bg #products__list .card .card__details {
+  position: absolute;
+  background-color: #2e2f33;
+  color: #fc5c7d;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 20px;
+  width: 100%;
+  height: 240px;
+  padding: 20px;
+  bottom: -170px;
+  left: 0;
+  transition: 0.5s all;
+}
+.products .products__bg #products__list .card .card__details p {
+  margin: 0;
+}
+.products .products__bg #products__list .card .card__details .products__name {
+  padding: 0 0 1rem 0;
+  font-size: 21px;
+  font-weight: 500;
+  color: #fc5c7d;
+}
+.products .products__bg #products__list .card .card__details .purchase {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.products .products__bg #products__list .card .card__details .purchase .btn-purchase {
+  background: #fc5c7d;
+  padding: 3px 12px;
+  border: 1px solid white;
+  border-radius: 12%;
+  letter-spacing: 0;
+}
+.products .products__bg #products__list .card:hover {
+  height: 450px;
+  width: 264px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transform: translateY(-70px);
+}
+.products .products__bg #products__list .card:hover .card__details {
+  bottom: 0;
+}
+.products .products__bg #products__list .card:hover .card__details .wrapper {
+  display: block;
+}
+
+.cart {
+  position: fixed;
+  right: 0;
+  top: 60px;
+}
+.cart .cartIcon {
+  display: flex;
+  position: relative;
+}
+.cart .cartIcon i {
+  background-color: transparent;
+  font-size: 40px;
+  font-weight: 600;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+}
+.cart .cartIcon .cartAmount {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #fc5c7d;
+  position: absolute;
+  top: 0px;
+  left: 39px;
+  height: 18px;
+  width: 18px;
+  padding: 0 6px 24px 4px;
+  border-radius: 50%;
+}/*# sourceMappingURL=style.css.map */

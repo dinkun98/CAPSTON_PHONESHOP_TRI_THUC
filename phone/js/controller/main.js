@@ -19,14 +19,12 @@ const getPhoneList = () => {
       // console.log(phoneListData);
       renderPhoneList(phoneListData);
       if(data){
-        console.log("data", data)
         renderCart(data);
         getEle("#quantity").innerHTML = countItem(data);
         getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(data)}`;
         for(let i = 0; i <= data.length; i++){
           const cartItem = new CartItem(data[i].product, data[i].quantity);
           cart.push(cartItem);
-          console.log(data[i])
         }
       }
     })
@@ -68,19 +66,18 @@ const renderPhoneList = (phoneList) => {
 };
 
 getEle("#option-brand").addEventListener("change", function () {
-  // console.log("select", this.value);
   phoneList2(this.value);
 });
 
 const phoneList2 = (brand) => {
-  // console.log("phoneListData", phoneListData);
-  let phoneListFilter = phoneListData.filter((value) => value.type === brand);
-  // console.log(phoneListFilter);
-  // console.log(phoneListData);
+  console.log(brand)
+  console.log(phoneListData)
+  let phoneListFilter = phoneListData.filter((element) => {
+    return element.type === brand;
+  })
 
   if (phoneListFilter.length == 0) {
     renderPhoneList(phoneListData);
-    // console.log("phoneListData:", phoneListData);
   } else {
     renderPhoneList(phoneListFilter);
   }

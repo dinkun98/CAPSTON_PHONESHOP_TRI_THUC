@@ -53,20 +53,7 @@ document.getElementById("btnAddPhone").onclick = () => {
       product.name,
       "#tbname",
       "Tên điện thoại không được để trống!"
-    ) &&
-    kiemTraTen(
-      product.name,
-      "#tbname",
-      "Tên điện thoại chỉ được nhập ký tự abc"
-    ) &&
-    kiemTraDoDai(
-      product.name,
-      5,
-      15,
-      "#tbname",
-      "Tên điện thoại phải lớn 5 và nhỏ hơn 15 ký tự"
-    );
-  console.log("valid sau khi kiem tra ma", valid);
+    ) 
 
   // kiểm tra price
   valid &=

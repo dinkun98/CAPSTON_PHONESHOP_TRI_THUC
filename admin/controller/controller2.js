@@ -26,13 +26,13 @@ function renderProductsList(productsList) {
   document.querySelector("#tablePhone").innerHTML = content;
 }
 
-function DSSP(productList2){
+function DSSP(productList2) {
   let products = [];
-  
-  for(var i = 0; i< productList2.Length; i++ ){
+
+  for (var i = 0; i < productList2.Length; i++) {
     var product = productList2[i];
-    console.log(product)
+    console.log(product);
     products.push(product);
-}
-return products;
+  }
+  return products;
 }

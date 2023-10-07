@@ -33,7 +33,16 @@ const layThongTinSanPham = () => {
   );
 };
 
+// window.document.getElementById("addPhoneForm").onclick = () => {
+//   // ẩn btn cập nhật
+//   document.getElementById("btnUpdate").style.display = "none";
+
+//   // hiển thị lại btn thêm 
+// document.getElementById("btnAddPhone").style.display = "inline-block"
+// }
+
 document.getElementById("btnAddPhone").onclick = () => {
+  
   // Lấy thông tin sam pham
   const product = layThongTinSanPham();
   console.log(product);
@@ -123,9 +132,9 @@ document.getElementById("btnAddPhone").onclick = () => {
 };
 
 window.editProduct = (id) => {
-  // ẩn btn thêm món
-  document.getElementById("btnAddPhone").style.display = "none";
-  //hiện thị btn cập nhật
+  // // ẩn btn thêm món
+  // document.getElementById("btnAddPhone").style.display = "none";
+  // //hiện thị btn cập nhật
   // document.getElementById('#btnUpdate').style.display = 'inline-block'
   // call API lấy thông tin san pham
   const promise = axios({
@@ -161,50 +170,35 @@ window.editProduct = (id) => {
   });
 };
 
-// function editProduct(id) {
-//   layThongTinSanPham(id)
-//     .then(function (res) {
-//       // lấy được sp cần sửa
-//       console.log("res", res.data);
-//       var sp = res.data;
+// cập nhật san pham
+document.getElementById('btnUpdate').onclick = () => {
+  // lấy thông tin san pham sau edit
+  const product = layThongTinSanPham()
+  console.log(product)
 
-//       // hiển thị thông tin sp cần sửa lên modal
-//       document.querySelector("#id").value = sp.id;
-//       document.querySelector("#name").value = sp.name;
-//       document.querySelector("#price").value = sp.price;
-//       document.querySelector("#screen").value = sp.screen;
-//       document.querySelector("#backCam").value = sp.backCamera;
-//       document.querySelector("#frontCam").value = sp.frontCamera;
-//       document.querySelector("#img").value = sp.img;
-//       document.querySelector("#desc").value = sp.desc;
-//       document.querySelector("#type").value = sp.type;
+  // lấy id cập nhật
+  const id = document.getElementById('btnUpdate').getAttribute('data-id')
 
-//       // mở modal
-//       $("#exampleModal").modal("show");
-//     })
-//     .catch(function (err) {
-//       console.log("err", err);
-//     });
-// }
-// // Bước 2: lấy thông tin từ form sau khi đã chỉnh sửa để cập nhật
-// function updateProduct() {
-//   var sp = layThongTinSanPham();
-//   console.log("sp: ", sp);
+  // call API cập nhật món ăn
+  const promise = axios({
+      method: 'PUT',
+      url: `https://6500588b18c34dee0cd4bf80.mockapi.io/Phone/${id}`,
+      data: {
+          ...product,
+      },
+  })
 
-//   updateProductByID(sp.id, sp)
-//     .then(function (res) {
-//       console.log("res", res);
+  promise
+      .then(() => {
+          // lấy lại danh sách món ăn sau khi cập nhật thành công
+          getProductList()
 
-//       //tắt modal sau khi update thành công
-//       $("#exampleModal").modal("hide");
-
-//       // lấy lại dssp mới nhất
-//       fetchProductsList1();
-//     })
-//     .catch(function (err) {
-//       console.log("err", err);
-//     });
-// }
+          // đóng modal sau khi cập nhật thành công
+          document.getElementById('btnClose').click()
+          fetchProductsList1();
+      })
+      .catch((err) => {})
+}
 
 window.delProduct = (id) => {
   // call API xóa

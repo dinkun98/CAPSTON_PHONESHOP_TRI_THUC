@@ -2,7 +2,7 @@ let phoneListData = [];
 let cart =[];
 const LIST_CART = 'LIST_CART';
 let data = JSON.parse(localStorage.getItem(LIST_CART))
-console.log(data)
+
 
 const getEle = (selector) => {
   return document.querySelector(selector);
@@ -18,6 +18,17 @@ const getPhoneList = () => {
       phoneListData = res.data;
       // console.log(phoneListData);
       renderPhoneList(phoneListData);
+      if(data){
+        console.log("data", data)
+        renderCart(data);
+        getEle("#quantity").innerHTML = countItem(data);
+        getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(data)}`;
+        for(let i = 0; i <= data.length; i++){
+          const cartItem = new CartItem(data[i].product, data[i].quantity);
+          cart.push(cartItem);
+          console.log(data[i])
+        }
+      }
     })
     .catch((err) => {});
 };
@@ -84,7 +95,7 @@ const renderCart = (cart) => {
         <img src="${cartItem.product.img}" alt="" style="width: 80%;">
       </td>
       <td>${cartItem.product.name}</td>
-      <td>
+      <td class="handleQTY">
         <span class="btn" onclick="minusQty(${
           cartItem.product.id
         })"><i class="fa-solid fa-minus"></i></span>
@@ -93,7 +104,7 @@ const renderCart = (cart) => {
           cartItem.product.id
         })"><i class="fa-solid fa-plus"></i></span>
       </td>
-      <td class="itemPrice">${cartItem.itemPrice()}</td>
+      <td class="itemPrice">${cartItem.product.price*cartItem.quantity}</td>
       <td class="btn btn-delete" onclick="deleteItem(${
         cartItem.product.id
       })"><i class="fa-solid fa-trash"></i></td>
@@ -101,6 +112,7 @@ const renderCart = (cart) => {
     `;
   });
   getEle("#tbodyShopList").innerHTML = htmlContent;
+ 
 };
 const findItem = (cart, id) => {
   let item;
@@ -124,7 +136,7 @@ const findIndexItem = (cart, id) => {
 const handleTotalPrice = (cart) => {
   let totalPrice = 0;
   cart.forEach((element) => {
-    totalPrice += element.itemPrice();
+    totalPrice += (element.product.price*element.quantity);
   });
   return totalPrice;
 };
@@ -174,7 +186,7 @@ window.addToCart = (id) => {
       sp.quantity++;
     }
     localStorage.setItem(LIST_CART, JSON.stringify(cart))
-    renderCart(data);
+    renderCart(cart);
     getEle("#quantity").innerHTML = countItem(cart);
     getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
   });
@@ -182,10 +194,12 @@ window.addToCart = (id) => {
 
 
 window.addQty = (id) => {
+  console.log("cart:", cart)
   let i = findIndexItem(cart, id);
   let cartItem = cart[i];
   cartItem.quantity++;
-  renderCart(data);
+  localStorage.setItem(LIST_CART, JSON.stringify(cart))
+  renderCart(cart);
   getEle("#quantity").innerHTML = countItem(cart);
   getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
 };
@@ -197,16 +211,17 @@ window.minusQty = (id) => {
   if (cartItem.quantity <= 0) {
     cart.splice(i, 1);
   }
-  renderCart(data);
+  localStorage.setItem(LIST_CART, JSON.stringify(cart))
+  renderCart(cart);
   getEle("#quantity").innerHTML = countItem(cart);
   getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
 };
 
 window.deleteItem = (id) => {
   let i = findIndexItem(cart, id);
-  console.log(i);
   cart.splice(Number(i), 1);
-  renderCart(data);
+  localStorage.setItem(LIST_CART, JSON.stringify(cart))
+  renderCart(cart);
   getEle("#quantity").innerHTML = countItem(cart);
   getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
 };
@@ -214,7 +229,7 @@ window.deleteItem = (id) => {
 window.payBill = (cart) => {
   alert("Hoàn tất thanh toán!");
   cart = [];
-  renderCart(data);
+  renderCart(cart);
   getEle("#quantity").innerHTML = countItem(cart);
   getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;
 };

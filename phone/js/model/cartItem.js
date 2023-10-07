@@ -4,8 +4,4 @@ class CartItem {
         this.quantity = quantity
     };
 
-    itemPrice = () => {
-        return this.product.price * this.quantity
-    }
-
 }

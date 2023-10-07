@@ -226,6 +226,7 @@ window.deleteItem = (id) => {
 window.payBill = (cart) => {
   alert("Hoàn tất thanh toán!");
   cart = [];
+  localStorage.setItem(LIST_CART, JSON.stringify(cart))
   renderCart(cart);
   getEle("#quantity").innerHTML = countItem(cart);
   getEle("#totalBill").innerHTML = ` Tổng tiền: ${handleTotalPrice(cart)}`;

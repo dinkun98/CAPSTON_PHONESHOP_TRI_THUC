@@ -31,7 +31,6 @@ function DSSP(productList2) {
 
   for (var i = 0; i < productList2.Length; i++) {
     var product = productList2[i];
-    console.log(product);
     products.push(product);
   }
   return products;

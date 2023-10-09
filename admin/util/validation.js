@@ -40,7 +40,6 @@ function kiemTraSo(value, idErr, message) {
     const re = /^[0-9]+$/;
 
     var isString = re.test(value);
-    console.log("isString: ", isString);
     if (isString) {
         document.querySelector(idErr).innerHTML = "";
         return true;
